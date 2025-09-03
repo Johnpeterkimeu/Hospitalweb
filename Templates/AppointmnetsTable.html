@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>    
+<title>Appointments Table</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+<style>
+    body {
+        background-image: url("https://via.placeholder.com/1920x1080?text=Medical+Background");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: white;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .Table {
+        background-color: rgba(0, 0, 0, 0.5);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+    .Appointmnets {
+        background: rgba(88, 214, 220, 0.95);
+        padding: 40px;
+        border-radius: 15px;
+        max-width: 1200px;
+        width: 100%;
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    }
+    .Appointmnets h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #003f40;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #007B7F;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    tr:hover {
+        background-color: #ddd;
+    }
+    .btn {
+        background-color: #007B7F;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+    .btn:hover {
+        background-color: #005e62;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+    }
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+    </style>
+</head>
+<body>
+    <div class="Table">
+        <div class="Appointmnets">
+            <h2>Appointments Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Contact</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Department</th>
+            <th>Status </th>
+           
+            <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for appointment in appointments %}
+            <tr>
+            <td>{{ appointment.booking.PatientName }}</td>
+            <td>{{ appointment.booking.Gender }}</td>
+            <td>{{ appointment.booking.Age }}</td>
+            <td>{{ appointment.booking.Contact }}</td>
+            <td>{{ appointment.booking.Doctor }}</td>
+            <td>{{ appointment.booking.appointment_date }}</td>
+            <td>{{ appointment.booking.Department }}</td>
+            <td>{{ appointment.Status }}</td>
+            <td>{{ appointment.Action }}</td>
+            
+                                                   
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous"></script>
+</body>
+</html>

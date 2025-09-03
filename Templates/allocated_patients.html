@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Allocated Patients</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>My Allocated Patients</h2>
+
+    {% if doctor %}
+        <p><strong>Doctor:</strong> {{ doctor.name }}</p>
+    {% else %}
+        <p class="text-danger">No doctor profile found for this user.</p>
+    {% endif %}
+
+    {% if error %}
+    <p style="color:red">{{ error }}</p>
+{% else %}
+    <h2>My Allocated Patients</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Contact</th>
+                <th>Department</th>
+                <th>Appointment Date</th>
+                <th>Appointment Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if bookings %}
+                {% for booking in bookings %}
+                    <tr>
+                        <td>{{ booking.patient.name }}</td>
+                        <td>{{ booking.patient.gender }}</td>
+                        <td>{{ booking.patient.age }}</td>
+                        <td>{{ booking.patient.contact }}</td>
+                        <td>{{ booking.department }}</td>
+                        <td>{{ booking.appointment_date }}</td>
+                        <td>{{ booking.appointment_time }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="7">No approved bookings allocated yet.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endif %}

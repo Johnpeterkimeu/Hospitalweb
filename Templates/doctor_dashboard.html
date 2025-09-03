@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4">
+    <div class="container">
+        <h2 class="mb-4">Welcome, Dr. {{ doctor.name }}</h2>
+
+        <h4>Your Allocated Patients</h4>
+        {% if patients %}
+            <table class="table table-striped table-hover mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Phone</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patient in patients %}
+                    <tr>
+                        <td>{{ patient.user.username }}</td>
+                        <td>{{ patient.gender }}</td>
+                        <td>{{ patient.age }}</td>
+                        <td>{{ patient.phone }}</td>
+                        <td>
+                            <span class="badge 
+                                {% if patient.status == 'admin_approved' %} bg-success 
+                                {% elif patient.status == 'doctor_approved' %} bg-warning 
+                                {% else %} bg-secondary {% endif %}">
+                                {{ patient.status }}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="alert alert-info mt-3">No patients allocated to you yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

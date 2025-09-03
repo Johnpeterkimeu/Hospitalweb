@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bookings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-4">
+    <a href="{% url 'Login' %}" class="btn btn-secondary mb-3">Logins</a>
+
+    
+    <h2>My Appointment Bookings</h2>
+
+    {% if booking_data %}
+    <table class="table table-bordered table-striped mt-4">
+        <thead class="table-dark">
+            <tr>
+                <th>#</th>
+                <th>Patient Name</th>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Contact</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in booking_data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.booking.PatientName }}</td>
+                <td>{{ item.booking.Doctor }}</td>
+                <td>{{ item.booking.appointment_date }}</td>
+                <td>{{ item.booking.Contact }}</td>
+                
+                 <td>
+    {% if item.status == "Approved" %}
+        <span class="badge bg-success">Approved</span>
+    {% elif item.status == "Rejected" %}
+        <span class="badge bg-danger">Rejected</span>
+    {% else %}
+        <span class="badge bg-secondary">Pending</span>
+    {% endif %}
+</td>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-info">You have no bookings submitted yet.</div>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Your Appointments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      body {
+        background-color: #f8f9fa;
+        padding: 2rem;
+      }
+
+      .appointments-container {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      h2 {
+        margin-bottom: 2rem;
+        color: #007bff;
+      }
+
+      .table th,
+      .table td {
+        vertical-align: middle !important;
+      }
+
+      .text-muted {
+        text-align: center;
+        font-style: italic;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="appointments-container">
+      <h2 class="text-center">Your Appointments</h2>
+
+      <table class="table table-bordered table-hover text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Phone</th>
+            <th>Doctor</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for appointment in appointments %}
+          <tr>
+            <td>{{ appointment.name }}</td>
+            <td>{{ appointment.gender }}</td>
+            <td>{{ appointment.age }}</td>
+            <td>{{ appointment.phone }}</td>
+            <td>{{ appointment.doctor }}</td>
+            <td>{{ appointment.appointment_date }}</td>
+          </tr>
+          {% empty %}
+          <tr>
+            <td colspan="6" class="text-muted">You have no appointments.</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Optional Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

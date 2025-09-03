@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+    <title>Appointments Forms</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <style>
+        body {
+            background-image: url("https://via.placeholder.com/1920x1080?text=Medical+Background");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .Booking {
+            background-color: rgba(0, 0, 0, 0.5);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+        .Appointments {
+            background: rgba(88, 214, 220, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 1200px;
+            width: 100%;
+            box-shadow: 0 0 25px rgba(0,0,0,0.4);
+        }
+        .Appointments h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #003f40;
+        }
+        .BookingForm {
+            margin-bottom: 20px;
+        }
+        .BookingForm label {
+            display: block;
+            margin-bottom: 5px;
+            color: #003f40;
+        }
+    </style>
+</head>
+<body>
+    <div class="Booking">
+        <div class="Appointments">
+            <h2>Appointments Form</h2>
+
+            <form method="post" action="{% url 'Booking_Appoint' %}">
+                {% csrf_token %}
+
+                <div class="BookingForm">
+                    <label for="patientName">Patient Name:</label>
+                    <input type="text" id="patientName" name="patientName" class="form-control" required>
+                </div>
+
+                <div class="BookingForm">
+                    <label for="Gender">Gender:</label>
+                    <select id="Gender" name="Gender" class="form-control">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option> 
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="BookingForm">
+                    <label for="Age">Age</label>
+                    <input type="number" id="Age" name="Age" class="form-control" required>
+                </div>
+
+                <div class="BookingForm">
+                    <label for="Phone">Phone Number:</label>
+                    <input type="tel" id="Phone" name="contact" class="form-control" value="+254" required>
+                </div>
+
+                <div class="BookingForm">
+                    <label for="Doctor">Doctor Type:</label>
+                    <select id="Doctor" name="Doctor" class="form-control">
+                        <option value="">Select Doctor</option>
+                        <option value="General">General</option>
+                        <option value="Specialist">Specialist</option>
+                    </select>
+                </div>
+
+                <div class="BookingForm">
+                    <label for="Department">Department:</label>
+                    <select id="Department" name="Department" class="form-control">
+                        <option value="">Select Department</option>
+                        <option value="Dentist">Dentist</option>
+                        <option value="Physician">Physician</option>
+                        <option value="Pediatrics">Pediatrics</option>
+                        <option value="Orthopedics">Orthopedics</option>
+                        <option value="General Medicine">General Medicine</option>
+                    </select>
+                </div>
+
+                <div class="BookingForm">
+                    <label for="Date">Date:</label>
+                    <input type="date" id="Date" name="Date" class="form-control" required>
+                </div>
+
+                <div class="BookingForm">
+                    <label for="doctor-select">Select Doctor:</label>
+                    <select name="doctor" id="doctor-select" class="form-control">
+                        {% for doctor in doctors %}
+                            <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="BookingForm">
+                    <label for="slot-select">Available Slots:</label>
+                    <select name="slot" id="slot-select" class="form-control">
+                        {% for slot in slots %}
+                            <option value="{{ slot.id }}">
+                                {{ slot.doctor.name }} - {{ slot.date }} {{ slot.start_time }} to {{ slot.end_time }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const dateInput = document.querySelector('input[type="date"][name="Date"]');
+        if (dateInput) {
+          const today = new Date().toISOString().split('T')[0];
+          dateInput.setAttribute('min', today);
+        }
+      });
+    </script>
+</body>
+</html>

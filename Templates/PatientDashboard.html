@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Patient Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      body {
+        background-color: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .dashboard-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+      }
+
+      .dashboard-container h2 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 1.5rem;
+      }
+
+      .list-group-item {
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="dashboard-container">
+      <h2>Welcome, {{ profile.user.username }}</h2>
+
+      <ul class="list-group">
+        <li class="list-group-item"><strong>Email:</strong> {{ profile.user.email }}</li>
+        <li class="list-group-item"><strong>Phone:</strong> {{ profile.phone }}</li>
+        <li class="list-group-item"><strong>Gender:</strong> {{ profile.gender }}</li>
+        <li class="list-group-item"><strong>Age:</strong> {{ profile.age }}</li>
+      </ul>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

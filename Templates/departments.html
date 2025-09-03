@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Medical Departments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+     <style>
+        body {
+            background-image: url("https://via.placeholder.com/1920x1080?text=Medical+Background"); /* Replace with your preferred image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: white;
+        }
+
+        .Departments{
+            background-color: #69bec2;
+            min-height: 100vh;
+            padding: 50px;
+        }
+        .menu {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .menu button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #33696c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .menu button:hover {
+            background-color: #2c5a5b;
+        }
+        .services {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .department-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .service-card {
+            background-color: #ffffffcc;
+            color: #000;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            font-weight: bold;
+        }
+        .service-card h2 {
+            color: #33696c;
+        }
+        .service-card p {
+            color: #333;
+        }
+        @media (max-width: 768px) {
+            .department-list {
+                flex-direction: column;
+                align-items: center;
+            }
+            .service-card {
+                width: 90%;
+            }
+        }
+        @media (max-width: 576px) {
+            .menu button {
+                width: 100%;
+                margin: 5px 0;
+            }
+            .service-card {
+                width: 100%;
+            }
+        }
+        .Departments h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+        .Departments p {
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .service-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        .service-card p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .service-card h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .menu button:focus {
+            outline: none;
+            box-shadow: 0 0 5px #fff;
+        }
+        .menu button:active {
+            background-color: #2c5a5b;
+            transform: scale(0.98);
+        }
+        .menu button:hover {
+            background-color: #2c5a5b;
+        }
+        .Departments {
+            background-color: #69bec2;
+            min-height: 100vh;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="Departments">
+        <h1>Medical Departments</h1>
+     <div class="menu">
+        <button onclick="location.href='{% url 'Admin' %}'">Admin</button>
+        <button onclick="location.href='{% url 'Staff' %}'">Staff</button>
+     </div>
+         <div class="services">
+            <p>Explore our various medical departments to find the right care for your health needs.</p>
+            <div class="department-list">
+                <div class="service-card">
+               
+               <h2>pharmacy</h2>
+                    <p><a href="{% url 'Staff' %}">Our pharmacy provides a wide range of medications and health products.</a></p>
+                  
+                </div>
+                <div class="service-card">
+                    <h2>Specialist</h2>
+                    <p><a href="{% url 'Staff' %}">We offer comprehensive care for a variety of health conditions.</a></p>
+                </div>
+                <div class="service-card">
+                    <h2>General</h2>
+                    <p><a href="{% url 'Staff' %}">Our general department provides essential health services and check-ups.</a></p>
+                </div>
+
+                <div class="service-card">
+                    <h2>Emergency</h2>
+                    <p><a href="{% url 'Staff' %}">Our emergency department is equipped to handle urgent medical situations.</a></p>
+                </div>
+                <div class="service-card">
+                    <h2>Diagnostic</h2>
+                    <p><a href="{% url 'Staff' %}">We offer advanced diagnostic services to help identify health issues.</p></a>
+
+                </div>
+                <div class="service-card">
+                    <h2>Rehabilitation</h2>
+                    <p><a href="{% url 'Staff' %}">Our rehabilitation services help patients recover and regain their strength.</p></a>
+                </div>
+                <div class="service-card">
+                    <h2>Nutrition</h2>
+                    <p><a href="{% url 'Staff' %}">We provide nutritional counseling and support for healthy living.</p></a>
+                </div>
+                <div class="service-card">
+                    <h2>Cash registration</h2>
+                    <p><a href="{% url 'Staff' %}">Our cash registration department ensures smooth billing and payment processes.</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </body>
+        </html>

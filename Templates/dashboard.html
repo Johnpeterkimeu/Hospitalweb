@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to Your Custom Admin Panel 🚀</h1>
+<p>Manage users, track stats, and customize your admin experience.</p>
+<p>Total Users: {{ user_count }}</p>
+{% endblock %}
+
+<table class="table">
+    <tr><th>ID</th><th>Username</th><th>Email</th></tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+    </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Appointments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            padding: 20px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #2c3e50;
+            color: white;
+        }
+        tr:hover {
+            background: #f1f1f1;
+        }
+        .btn {
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 4px;
+            display: inline-block;
+        }
+        .approve {
+            background: #27ae60;
+            color: white;
+        }
+        .approve:hover {
+            background: #219150;
+        }
+        .reject {
+            background: #c0392b;
+            color: white;
+        }
+        .reject:hover {
+            background: #a5281d;
+        }
+    </style>
+</head>
+<body>
+    <h2>Appointments Management</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Patient</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Contact</th>
+                <th>Department</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.id }}</td>
+                <td>{{ booking.patient_name }}</td>
+                <td>{{ booking.age }}</td>
+                <td>{{ booking.gender }}</td>
+                <td>{{ booking.contact }}</td>
+                <td>{{ booking.department }}</td>
+                <td>{{ booking.appointment_date }}</td>
+                <td>{{ booking.appointment_time }}</td>
+                <td>
+                    {% if booking.is_approved %}
+                        ✅ Approved
+                    {% else %}
+                        ❌ Pending
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'approve_appointment' booking.id %}" class="btn approve">Approve</a>
+                    <a href="{% url 'reject_appointment' booking.id %}" class="btn reject">Reject</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="10">No appointments found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

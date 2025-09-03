@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assigned Patients</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h2>Welcome, Dr. {{ doctor.Name }}</h2>
+    <h4>Approved and Allocated Patients</h4>
+
+    {% if bookings %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Contact</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.PatientName }}</td>
+                <td>{{ booking.Gender }}</td>
+                <td>{{ booking.Age }}</td>
+                <td>{{ booking.Contact }}</td>
+                <td>{{ booking.date|date:"Y-m-d" }}</td>
+                <td>{{ booking.time|time:"H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No approved bookings yet.</p>
+    {% endif %}
+</body>
+</html>

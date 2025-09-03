@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Home</title>
+</head>
+<body>
+    <h2>Welcome, Dr. {{ doctor.name }}</h2>
+
+    <ul>
+        <li><a href="{% url 'doctor_availability' %}">Confirm Availability</a></li>
+        <li><a href="{% url 'doctor_patients' %}">View Allocated Patients</a></li>
+    </ul>
+
+</body>
+</html>

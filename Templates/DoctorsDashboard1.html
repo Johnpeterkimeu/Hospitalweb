@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url("https://via.placeholder.com/1920x1080?text=Medical+Background");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #ffffff;
+        }
+
+        .dashboard-wrapper {
+            background-color: rgba(0, 0, 0, 0.6);
+            min-height: 100vh;
+            padding: 50px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dashboard-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .dashboard-title {
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 40px;
+            color: #007a87;
+        }
+
+        .service-card {
+            background-color: #f1f9f9;
+            color: #004d4f;
+            padding: 25px 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h5 {
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+    <div class="dashboard-card">
+        <h2 class="dashboard-title">Doctor Dashboard</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="service-card">
+                    <h5>Appointments</h5>
+                    <p class="mb-0">View and manage your appointments with patients.</p>
+                    <a href="{% url 'DoctorsApproval' %}" class="btn btn-primary mt-2">Manage Appointments</a>
+                </div>
+            </div>
+            {% comment %} <div class="col-md-4">
+                <div class="service-card">
+                    <h5>Patient Records</h5>
+                    <p class="mb-0">Access and update patient medical records.</p>
+                </div> {% endcomment %}
+            </div>
+            {% comment %} <div class="col-md-4">
+                <div class="service-card">
+                    <h5>Doctor Reports</h5>
+                    <p class="mb-0">Generate and view reports on patient treatments and outcomes.</p>
+                    <a href="{% url 'PatientRecords' %}" class="btn btn-primary mt-2">  Reports</a>
+                </div> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

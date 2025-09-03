@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Manage Appointments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container mt-4">
+        <h2 class="mb-4 text-center">Admin - Manage Patient Appointments</h2>
+
+        <!-- Pending Appointments -->
+        <div class="card mb-4">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0">⏳ Pending Appointments</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appt in appointments %}
+                        {% if appt.status == "pending" %}
+                        <tr>
+                            <td>{{ appt.patient.user.username }}</td>
+                            <td>{{ appt.doctor.name }}</td>
+                            <td>{{ appt.appointment_date }}</td>
+                            <td>{{ appt.appointment_time }}</td>
+                            <td><span class="badge bg-warning text-dark">{{ appt.status }}</span></td>
+                            <td>
+                                <a href="{% url 'admin_approve' appt.id %}" class="btn btn-success btn-sm">Approve</a>
+                                <a href="{% url 'admin_reject' appt.id %}" class="btn btn-danger btn-sm">Reject</a>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% empty %}
+                        <tr><td colspan="6" class="text-center">No pending appointments.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Approved Appointments -->
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">✅ Approved Appointments</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appt in appointments %}
+                        {% if appt.status == "approved" %}
+                        <tr>
+                            <td>{{ appt.patient.user.username }}</td>
+                            <td>{{ appt.doctor.name }}</td>
+                            <td>{{ appt.appointment_date }}</td>
+                            <td>{{ appt.appointment_time }}</td>
+                            <td><span class="badge bg-success">{{ appt.status }}</span></td>
+                        </tr>
+                        {% endif %}
+                        {% empty %}
+                        <tr><td colspan="5" class="text-center">No approved appointments.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Rejected Appointments -->
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">❌ Rejected Appointments</h5>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Patient</th>
+                            <th>Doctor</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for appt in appointments %}
+                        {% if appt.status == "rejected" %}
+                        <tr>
+                            <td>{{ appt.patient.user.username }}</td>
+                            <td>{{ appt.doctor.name }}</td>
+                            <td>{{ appt.appointment_date }}</td>
+                            <td>{{ appt.appointment_time }}</td>
+                            <td><span class="badge bg-danger">{{ appt.status }}</span></td>
+                        </tr>
+                        {% endif %}
+                        {% empty %}
+                        <tr><td colspan="5" class="text-center">No rejected appointments.</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

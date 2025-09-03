@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Patients</title>
+    <style>
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        table, th, td {
+            border: 1px solid #aaa;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>My Allocated Patients - Dr. {{ doctor.name }}</h2>
+
+{% if patients %}
+    <table>
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Contact</th>
+                <th>Department</th>
+                <th>Appointment Date</th>
+                <th>Appointment Time</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for booking in patients %}
+            <tr>
+                <td>{{ booking.patient_name }}</td>
+                <td>{{ booking.gender }}</td>
+                <td>{{ booking.age }}</td>
+                <td>{{ booking.contact }}</td>
+                <td>{{ booking.department }}</td>
+                <td>{{ booking.appointment_date }}</td>
+                <td>{{ booking.appointment_time }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p style="text-align:center; margin-top:20px;">No patients allocated yet.</p>
+{% endif %}
+
+</body>
+</html>

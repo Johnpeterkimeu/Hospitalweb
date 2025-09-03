@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Approved Patients</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <h2 class="mb-4">Approved Patients for Dr. {{ doctor.Name }}</h2>
+
+    {% if approved_bookings %}
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Patient Name</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Contact</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in approved_bookings %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ booking.PatientName }}</td>
+                        <td>{{ booking.Gender }}</td>
+                        <td>{{ booking.Age }}</td>
+                        <td>{{ booking.Contact }}</td>
+                        <td>{{ booking.appointment_date }}</td>
+                        <td>{{ booking.time }}</td>
+                        <td>{{ booking.Department }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info">No approved patients found.</div>
+    {% endif %}
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<h2>My Allocated Patients</h2>
+
+{% if message %}
+    <p>{{ message }}</p>
+{% endif %}
+
+{% if bookings %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Appointment Date</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+                <tr>
+                    <td>{{ booking.PatientName }}</td>
+                    <td>{{ booking.Email }}</td>
+                    <td>{{ booking.Contact }}</td>
+                    <td>{{ booking.Date }}</td>
+                    <td>{{ booking.Department }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

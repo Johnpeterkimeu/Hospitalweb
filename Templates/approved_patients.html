@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Allocated Patients</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    <h2 class="mb-4">Allocated Patients</h2>
+
+    {% if allocated_bookings %}
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Gender</th>
+                    <th>Age</th>
+                    <th>Contact</th>
+                    <th>Date</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in allocated_bookings %}
+                    <tr>
+                        <td>{{ booking.PatientName }}</td>
+                        <td>{{ booking.Gender }}</td>
+                        <td>{{ booking.Age }}</td>
+                        <td>{{ booking.Contact }}</td>
+                        <td>{{ booking.Date }}</td>
+                        <td>{{ booking.Department }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No allocated patients found.</p>
+    {% endif %}
+</body>
+</html>
